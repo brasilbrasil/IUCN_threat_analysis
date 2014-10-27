@@ -1,4 +1,4 @@
-wd="D:/Dropbox/current work/FB SDM/IUCN_threats/"
+wd="D:/Dropbox/current work/IUCN_threats_analysis_outputs/"
 setwd(wd)
 library(stringi)
 

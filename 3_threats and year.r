@@ -1,4 +1,4 @@
-wd="D:/Dropbox/current work/FB SDM/IUCN_threats/"
+wd="D:/Dropbox/current work/IUCN_threats_analysis_outputs/"
 setwd(wd)
 library(stringi)
 species_types=c("critically endangered", "endangered", "least concern")
@@ -72,7 +72,6 @@ plot(all_yr_freq2$All.Species.count, all_yr_freq2$CC.Species.count)
 
 #CC threats per year plot
 plot(as.numeric(all_spp_data$Year.assessed), all_threat_data_summary[,"11"])
-
 
 #two way anova
 aovData=cbind(all_spp_data, all_threat_data_summary)

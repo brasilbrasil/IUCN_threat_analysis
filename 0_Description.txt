@@ -1,0 +1,7 @@
+--First script uses list of species in each red list category (downloaded from IUC)
+to download additional info from IUCN site throught mining of pages [0_IUCN_threat_extraction2.R]
+--Second script summarizes extracted threat information for 1) all species, 2) climate change and 3) non-climate change threatened
+species [summary.r]
+--Third script makes graphical outputs of analyses [2_collect_all_stats.r]\
+--Last script makes a few statistical comparisons, including analysis to determine if there is a time dependence of 
+climate change threat attribution for IUCN species listings
