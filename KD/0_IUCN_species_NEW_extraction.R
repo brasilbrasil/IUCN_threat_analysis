@@ -12,7 +12,11 @@ library(stringr)
 
 species_type="critically endangered" #least concern/ #critically endangered/endangered
 spp_info = read.csv(paste0("data/",species_type,".csv")) #
+spp_info = spp_info[spp_info$Phylum!="CNIDARIA",]
+  
 Species_IDs=spp_info[,"Species.ID"]
+
+
 
 #load threat info
 threat_codes_table = read.csv("IUCN_threats.csv")
@@ -45,7 +49,10 @@ for (code in Species_IDs){
   }
 }
 
-write.table(all_threats, file = paste0("threat_matrix_",species_type,".csv"), sep=",", row.names = FALSE)
+##write.table(all_threats, file = paste0("threat_matrix_rem_",species_type,".csv"), sep=",", row.names = FALSE)
+
+##save to new folder
+write.table(all_threats, file = paste0("NEW_matrix/","threat_matrix_rem_",species_type,".csv"), sep=",", row.names = FALSE)
 
 ##junk below
 # input = "panthera-uncia"

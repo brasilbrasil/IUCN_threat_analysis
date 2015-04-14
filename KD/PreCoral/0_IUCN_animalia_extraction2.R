@@ -10,8 +10,8 @@ library(stringr)
 #require(maptools)
 #require(jpeg)
 
-species_type="critically endangered" #least concern/ #critically endangered/endangered
-spp_info = read.csv(paste0("data/",species_type,".csv")) #
+species_type="Animalia_LC" #Animalia_CR/ #Animalia_EN/Animalia_LC
+spp_info = read.csv(paste0("data2/",species_type,".csv")) #
 Species_IDs=spp_info[,"Species.ID"]
 
 #load threat info
@@ -46,6 +46,7 @@ for (code in Species_IDs){
 }
 
 write.table(all_threats, file = paste0("threat_matrix_",species_type,".csv"), sep=",", row.names = FALSE)
+
 
 ##junk below
 # input = "panthera-uncia"

@@ -23,10 +23,10 @@ for (i in 1:length(species_types)){
 for (i in 1:length(species_types)){
   species_type=species_types[i]
   if (i==1){
-    all_threat_data=read.csv(paste0("threat_matrix_",species_type,".csv"), header = T, row.names = NULL, check.names = FALSE)#
+    all_threat_data=read.csv(paste0("NEW_matrix/","threat_matrix_rem_",species_type,".csv"), header = T, row.names = NULL, check.names = FALSE)#
     #all_threat_data=cbind(all_threat_data, status=species_types_short[i])
   }else{
-    jnk=read.csv(paste0("threat_matrix_",species_type,".csv"), header = T, row.names = NULL, check.names = FALSE)#
+    jnk=read.csv(paste0("NEW_matrix/","threat_matrix_rem_",species_type,".csv"), header = T, row.names = NULL, check.names = FALSE)#
     #jnk=cbind(jnk, status=species_types_short[i])
     all_threat_data=rbind(all_threat_data, jnk)    
   }
@@ -39,7 +39,7 @@ n_threats=rowSums(all_threat_data[,threats])
 all_threat_data_summary=cbind(all_threat_data_summary,n_threats)
 #
 
-#total threats per year
+#total threats per year     ##ERROR OCCURED (x y lengths)
 plot(as.numeric(all_spp_data$Year.assessed), all_threat_data_summary$n_threats)
 
 #CC threats per year (hist)
@@ -73,7 +73,7 @@ ggplot(data.m, aes(Year, value)) +
 
 plot(all_yr_freq2$All.Species.count, all_yr_freq2$CC.Species.count)
 
-#CC threats per year plot
+#CC threats per year plot    ##ERROR OCCURED (x y lengths)
 plot(as.numeric(all_spp_data$Year.assessed), all_threat_data_summary[,"11"])
 
 #two way anova
