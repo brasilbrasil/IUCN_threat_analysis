@@ -1,5 +1,5 @@
-#wd="D:/Dropbox/current work/IUCN_threats_analysis_outputs/"
-wd="C:/Users/Kaipo Dye/Dropbox/PICCC/IUCN_threats_analysis_outputs/"
+wd="D:/Dropbox/current work/IUCN_threat_analysis_redo/"
+#wd="C:/Users/Kaipo Dye/Dropbox/PICCC/IUCN_threats_analysis_outputs/"
 setwd(wd)
 species_types=c("critically endangered", "endangered", "least concern")
 proj_names=c("all", "CC", "nCC")

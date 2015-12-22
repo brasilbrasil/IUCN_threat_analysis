@@ -1,7 +1,7 @@
 #losely based on 
 #http://thebiobucket.blogspot.com/2012/06/use-iucn-data-with-r-xpath.html
-wd="C:/Users/Kaipo Dye/Dropbox/PICCC/IUCN_threats_analysis_outputs/"
-#wd="D:/Dropbox/current work/IUCN_threats_analysis_outputs/"
+#wd="C:/Users/Kaipo Dye/Dropbox/PICCC/IUCN_threats_analysis_outputs/"
+wd="D:/Dropbox/current work/IUCN_threats_analysis_outputs/"
 setwd(wd)
 require(XML)
 library(stringi)
@@ -10,7 +10,7 @@ library(stringr)
 #require(maptools)
 #require(jpeg)
 
-species_type="critically endangered" #least concern/ #critically endangered/endangered
+species_type="all_species" #least concern/ #critically endangered/endangered
 spp_info = read.csv(paste0("data/",species_type,".csv")) #
 Species_IDs=spp_info[,"Species.ID"]
 
