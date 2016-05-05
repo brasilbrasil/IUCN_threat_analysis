@@ -90,6 +90,12 @@ for (kingdom in kingdoms){
   
 }
 
+#calculate n of species in each IUCN/ sp group
+all_counts=read.csv("results/all_data_combined_onlySppWThreatInfo.csv")
+all_counts_few_cols=all_counts[, c("Kingdom", "Red.List.status", "X11")]
+all_counts_few_cols$count_n=1
+aggregate(count_n ~ Kingdom + Red.List.status, data = all_counts_few_cols, FUN = sum)
+
 
 difference_table_for_graphs=all_ttest_tables[all_ttest_tables$kingdom!="",]
 a=ggplot(difference_table_for_graphs, aes(x=species_type, y=(threat_increase*100-100), fill=kingdom)) +   

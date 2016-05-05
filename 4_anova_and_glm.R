@@ -3,8 +3,8 @@ library(reshape2)
 library(ggplot2)
 ##run this code after merging all IUCN data
 
-wd="D:/Dropbox/current work/IUCN_threats_analysis_outputs/"
-#wd="C:/Users/Kaipo Dye/Dropbox/PICCC/IUCN_threats_analysis_outputs/"
+#wd="D:/Dropbox/current work/IUCN_threats_analysis_outputs/"
+wd="C:/Users/Kaipo Dye/Dropbox/PICCC/IUCN_threats_analysis_outputs/"
 setwd(wd)
 all_data_combined = read.csv(paste0("resultsCheck/all_data_combined_onlySppWThreatInfo_wGeog",".csv"), header = T, row.names = NULL, check.names = FALSE)
 
@@ -29,11 +29,15 @@ plot(int)
 
 #three way anova 
 independents=c("CC_threat", "Red.List.status", "Kingdom")
-int <- aov(as.formula(paste0(dependents, " ~ ", independents[1],"*", independents[2], "*", independents[3])), data=data)
+inter <- aov(as.formula(paste0(dependents, " ~ ", independents[1],"*", independents[2], "*", independents[3])), data=data)
 #int <- aov(all_data_combined$n_threats ~ all_data_combined$CC_threat*all_data_combined$status)
-summary(int)
-plot(int)
+summary(inter)
 
+addit <- aov(as.formula(paste0(dependents, " ~ ", independents[1],"+", independents[2], "+", independents[3])), data=data)
+summary(addit)
+
+anova(inter,addit,test="Chisq")
+                              
 
 #2 factor GLM models
 #glm and poisson family
@@ -47,14 +51,16 @@ plot(glmFit)
 #glm and poisson family
 #poison since dependent variable is count data
 independents=c("CC_threat", "Red.List.status", "Kingdom")
-glmFit=glm(as.formula(paste0(dependents, " ~ ", independents[1],"*", independents[2],"*", independents[3])), data=data, family=poisson())
-summary(glmFit)
-plot(glmFit)
+glmInt=glm(as.formula(paste0(dependents, " ~ ", independents[1],"*", independents[2],"*", independents[3])), data=data, family=poisson())
+summary(glmInt)
+plot(glmInt)
 
 #no interactions
-glmFit=glm(as.formula(paste0(dependents, " ~ ", independents[1]," + ", independents[2]," + ", independents[3])), data=data, family=poisson())
-summary(glmFit)
-plot(glmFit)
+glmAdit=glm(as.formula(paste0(dependents, " ~ ", independents[1]," + ", independents[2]," + ", independents[3])), data=data, family=poisson())
+summary(glmAdit)
+plot(glmAdit)
+
+anova(glmAdit,glmInt,test="Chisq")
 
 library(boot)
 glm.diag=glm.diag(glmFit)
