@@ -1,4 +1,4 @@
-wd="D:/Dropbox/current work/IUCN_threat_analysis_redo/"
+wd="D:/Dropbox/current work/IUCN_threat_publication/IUCN_threat_analysis_redo/"
 setwd(wd)
 library(stringi)
 remove_zero_nonccthreats=F
@@ -84,10 +84,15 @@ levels(mega_matrix2$CC_threat) <- c('climate vulnerable', 'not climate vulnerabl
 levels(mega_matrix2$Kingdom) <- c('Animalia', 'Plantae')
 a=ggplot(data=mega_matrix2, aes(x=Kingdom, y=n_nonCC_threat, fill=CC_threat)) + 
   geom_bar(position=position_dodge(), stat="summary", fun.y = "mean")+ ylab("Mean number of non-climatic threats") +
+  theme(legend.title=element_blank()) + scale_fill_grey(start = 0, end = .5)
+a
+ggsave(a, file=paste0("results/graphs/mean.n.ncc.threats.by.kingdom_grey.tiff"), width=6, height=4, compression = "lzw")
+
+a=ggplot(data=mega_matrix2, aes(x=Kingdom, y=n_nonCC_threat, fill=CC_threat)) + 
+  geom_bar(position=position_dodge(), stat="summary", fun.y = "mean")+ ylab("Mean number of non-climatic threats") +
   theme(legend.title=element_blank())
 a
 ggsave(a, file=paste0("results/graphs/mean.n.ncc.threats.by.kingdom.tiff"), width=6, height=4, compression = "lzw")
-
 
 #proj_name, species_type
 IUCN_cats=c("LC", "NT", "VU", "EN", "CR")

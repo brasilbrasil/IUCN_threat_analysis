@@ -1,7 +1,7 @@
 rm(list = ls()) #remove all past worksheet variables
 
 ##run this code after merging all IUCN data
-wd="D:/Dropbox/current work/IUCN_threat_analysis_redo/"
+wd="D:/Dropbox/current work/IUCN_threat_publication/IUCN_threat_analysis_redo/"
 #wd="C:/Users/Kaipo Dye/Dropbox/PICCC/IUCN_threats_analysis_outputs/"
 setwd(wd)
 all_data_combined = read.csv(paste0("results/all_data_combined_onlySppWThreatInfo",".csv"), header = T, row.names = NULL, check.names = FALSE)
@@ -110,6 +110,21 @@ multiHistFx=function(histDf, xcol, fillcol, txtID, x_lim=NULL){
   b=b+theme(legend.title=element_blank())
   ggsave(a, file=paste0("results/hists_and_counts/hist_for_", txtID,"_of_",xcol,"_counts_by_", fillcol, ".tiff"), width=6, height=4, compression = "lzw")
   ggsave(b, file=paste0("results/hists_and_counts/hist_for_", txtID,"_of_",xcol,"_density_by_", fillcol, ".tiff"), width=6, height=4, compression = "lzw")  
+
+  a=ggplot(histDf, aes(get(xcol), ..count.., fill = get(fillcol))) + xlim(0, x_lim) + scale_fill_grey(start = 0, end = .5) + scale_colour_grey(start = 0, end = .5) + 
+    geom_histogram(binwidth=1, alpha=1, position="dodge")+xlab("Number of non-climatic threats")+ylab("Count")+
+    geom_vline(data = mean_vals,aes(xintercept=x, colour=Group.1), show.legend = FALSE)
+  b=ggplot(histDf, aes(get(xcol), ..density.., fill = get(fillcol))) + xlim(0, x_lim) + scale_fill_grey(start = 0, end = .5) + scale_colour_grey(start = 0, end = .5) +
+    geom_histogram(binwidth=1, alpha=1, position="dodge")+xlab("Number of non-climatic threats")+ylab("Density of counts")+  
+    geom_vline(data = mean_vals,aes(xintercept=x, colour=Group.1), show.legend = FALSE)
+  #a=a+ scale_fill_grey(start = 0, end = .5) #http://stackoverflow.com/questions/13501217/ggplot2-for-grayscale-printouts
+  a=a+ theme_bw()
+  a=a+theme(legend.title=element_blank())
+  ggsave(a, file=paste0("results/hists_and_counts/hist_for_", txtID,"_of_",xcol,"_counts_by_", fillcol, "_grey.tiff"), width=6, height=4, compression = "lzw")
+  #b=b+ scale_fill_grey(start = 0, end = .5) #http://stackoverflow.com/questions/13501217/ggplot2-for-grayscale-printouts
+  b=b+ theme_bw()
+  b=b+theme(legend.title=element_blank())
+  ggsave(b, file=paste0("results/hists_and_counts/hist_for_", txtID,"_of_",xcol,"_density_by_", fillcol, "_grey.tiff"), width=6, height=4, compression = "lzw")
 }
 
 ###histograms across all species

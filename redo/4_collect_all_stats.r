@@ -1,6 +1,6 @@
 #wd="D:/Dropbox/current work/IUCN_threats_analysis_outputs/"
 #wd="C:/Users/Kaipo Dye/Dropbox/IUCN_threat_analysis_redo/"
-wd="D:/Dropbox/current work/IUCN_threat_analysis_redo/"
+wd="D:/Dropbox/current work/IUCN_threat_publication/IUCN_threat_analysis_redo/"
 setwd(wd)
 IUCN_cats=c("LC", "NT", "VU", "EN", "CR")
 kingdoms=c("", "ANIMALIA", "PLANTAE")

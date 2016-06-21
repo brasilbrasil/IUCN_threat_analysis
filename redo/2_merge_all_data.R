@@ -2,7 +2,7 @@ rm(list = ls()) #remove all past worksheet variables
 #This code can run after extracting threat info for each group
 #wd="D:/Dropbox/current work/IUCN_threats_analysis_outputs/"
 #wd="C:/Users/Kaipo Dye/Dropbox/PICCC/IUCN_threats_analysis_outputs/"
-wd="D:/Dropbox/current work/IUCN_threat_analysis_redo/"
+wd="D:/Dropbox/current work/IUCN_threat_publication/IUCN_threat_analysis_redo/"
 setwd(wd)
 library(stringi)
 geographical=F

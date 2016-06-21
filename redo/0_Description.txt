@@ -1,3 +1,6 @@
+A version of the manuscript with anotated links between all outputs and source scripts is included in this folder 
+and named "IUCN multi threat MS with source info.docx". This document details what is the source of each value, table, figure listed in the manuscript
+
 0_IUCN_threat_extraction2parallel.R
 Script uses list of species in each red list category (downloaded from IUCN)
 to download additional info from IUCN site throught mining of pages [0_IUCN_threat_extraction2.R]

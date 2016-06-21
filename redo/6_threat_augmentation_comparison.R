@@ -2,7 +2,7 @@ rm(list = ls()) #remove all past worksheet variables
 
 ##run this code after merging all IUCN data
 #wd="D:/Dropbox/current work/IUCN_threats_analysis_outputs/"
-wd="D:/Dropbox/current work/IUCN_threat_analysis_redo/"
+wd="D:/Dropbox/current work/IUCN_threat_publication/IUCN_threat_analysis_redo/"
 setwd(wd)
 megamat_filename=paste0("results/all_data_combined_onlySppWThreatInfo",".csv")
 remove_zero_nonccthreats=F
