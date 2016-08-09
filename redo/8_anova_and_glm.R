@@ -8,9 +8,9 @@ sink.reset <- function(){
   }
 }
 
-#wd="C:/Users/Kaipo Dye/Dropbox/PICCC/Kaipo vulnerability and multiple threats/IUCN_threat_analysis_redo/"
-#wd="D:/Dropbox/current work/contracting shared folders/Kaipo vulnerability and multiple threats/IUCN_threat_analysis_redo/"
-wd="D:/Dropbox/current work/IUCN_threat_publication/IUCN_threat_analysis_redo/"
+#wd="C:/Users/Kaipo Dye/Dropbox/PICCC/Kaipo vulnerability and multiple threats/IUCN_test_analysis_results20160621/"
+#wd="D:/Dropbox/current work/contracting shared folders/Kaipo vulnerability and multiple threats/IUCN_test_analysis_results20160621/"
+wd="D:/Dropbox/current work/IUCN_threat_publication/IUCN_test_analysis_results20160621/"
 setwd(wd)
 all_data_combined = read.csv(paste0("results/all_data_combined_onlySppWThreatInfo",".csv"), header = T, row.names = NULL, check.names = FALSE)
 

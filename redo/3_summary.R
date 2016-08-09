@@ -1,4 +1,4 @@
-wd="D:/Dropbox/current work/IUCN_threat_publication/IUCN_threat_analysis_redo/"
+wd="D:/Dropbox/current work/IUCN_threat_publication/IUCN_test_analysis_results20160621/"
 setwd(wd)
 library(stringi)
 remove_zero_nonccthreats=F
@@ -77,7 +77,7 @@ name = paste0("results/ttests/", "ttest_n_nCC_trheats_by_CC_nCC_threatened_ALLSP
 write.table(df, file = name, sep=",", row.names = FALSE)
 
 #some graphs
-#figure 2
+#figure 1
 library(ggplot2)
 mega_matrix2=mega_matrix
 levels(mega_matrix2$CC_threat) <- c('climate vulnerable', 'not climate vulnerable')
@@ -87,6 +87,27 @@ a=ggplot(data=mega_matrix2, aes(x=Kingdom, y=n_nonCC_threat, fill=CC_threat)) +
   theme(legend.title=element_blank()) + scale_fill_grey(start = 0, end = .5)
 a
 ggsave(a, file=paste0("results/graphs/mean.n.ncc.threats.by.kingdom_grey.tiff"), width=6, height=4, compression = "lzw")
+
+#figure 1 (with error bars)
+library(ggplot2)
+mega_matrix2=mega_matrix
+levels(mega_matrix2$CC_threat) <- c('climate vulnerable', 'not climate vulnerable')
+levels(mega_matrix2$Kingdom) <- c('Animalia', 'Plantae')
+#mega_matrix3=mega_matrix2[,c("n_nonCC_threat", "Kingdom", "CC_threat")]
+#summary_df=aggregate(formula=n_nonCC_threat~Kingdom+CC_threat, FUN=mean, data=mega_matrix2)
+summary_df=aggregate(formula=n_nonCC_threat~Kingdom+CC_threat, FUN=function(x) c(mn = mean(x), n = length(x), sd = sd(x), se=sd(x)/sqrt(length(x)), upper=mean(x)+sd(x)/sqrt(length(x)), lower=mean(x)-sd(x)/sqrt(length(x))), data=mega_matrix2) #http://stackoverflow.com/questions/12064202/using-aggregate-to-apply-several-functions-on-several-variables-in-one-call
+#summary_df2=as.data.frame(summary_df)
+summary_df=as.data.frame(as.list(summary_df))
+
+#http://docs.ggplot2.org/0.9.3.1/geom_errorbar.html
+dodge <- position_dodge(width=0.9)
+a=ggplot(data=summary_df, aes(x=Kingdom, y=n_nonCC_threat.mn, fill=CC_threat)) + 
+  geom_bar(position=dodge, stat="identity")+ ylab("Mean number of non-climatic threats") + #stat="summary", fun.y = "mean"
+  theme(legend.title=element_blank()) + scale_fill_grey(start = 0.25, end = .5)
+limits <- aes(ymax = summary_df$n_nonCC_threat.upper, ymin=summary_df$n_nonCC_threat.lower)
+a=a + geom_errorbar(limits, position=dodge, width=0.5)
+ggsave(a, file=paste0("results/graphs/mean.n.ncc.threats.by.kingdom_grey_with_SE.tiff"), width=6, height=4, compression = "lzw")
+
 
 a=ggplot(data=mega_matrix2, aes(x=Kingdom, y=n_nonCC_threat, fill=CC_threat)) + 
   geom_bar(position=position_dodge(), stat="summary", fun.y = "mean")+ ylab("Mean number of non-climatic threats") +

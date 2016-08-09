@@ -2,12 +2,13 @@ rm(list = ls()) #remove all past worksheet variables
 #This code can run after extracting threat info for each group
 #wd="D:/Dropbox/current work/IUCN_threats_analysis_outputs/"
 #wd="C:/Users/Kaipo Dye/Dropbox/PICCC/IUCN_threats_analysis_outputs/"
-wd="D:/Dropbox/current work/IUCN_threat_publication/IUCN_threat_analysis_redo/"
+wd="D:/Dropbox/current work/IUCN_threat_publication/IUCN_test_analysis_results20160621/"
 setwd(wd)
 library(stringi)
 geographical=F
 remove_LRlc=T
 
+dir.create("results/", showWarnings = F)
 if (geographical){
   species_types=c("antartica", "carribean", "east_asia", "europe", "meso_amer", "nort_amer", "nort_asia", "oceania", "s_east_asia", "sout_amer", "sub_sahara", "w_cent_asia")
   species_types_short=c("ANT", "CAR", "EAS", "EU", "MA", "NA", "NAS", "OC", "SEA", "SA", "SUB", "CAS")

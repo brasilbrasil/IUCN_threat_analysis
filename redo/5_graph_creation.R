@@ -1,7 +1,7 @@
 rm(list = ls()) #remove all past worksheet variables
 
 ##run this code after merging all IUCN data
-wd="D:/Dropbox/current work/IUCN_threat_publication/IUCN_threat_analysis_redo/"
+wd="D:/Dropbox/current work/IUCN_threat_publication/IUCN_test_analysis_results20160621/"
 #wd="C:/Users/Kaipo Dye/Dropbox/PICCC/IUCN_threats_analysis_outputs/"
 setwd(wd)
 all_data_combined = read.csv(paste0("results/all_data_combined_onlySppWThreatInfo",".csv"), header = T, row.names = NULL, check.names = FALSE)
@@ -12,6 +12,7 @@ library(ggplot2)
 #be of augmentation)
 #all_data_combined=all_data_combined[all_data_combined$n_nonCC_threat!=0,]  
 
+dir.create("results/barplots/", showWarnings = F)
 ##function to create ggplot bar graphs based on 2 independent factors, 1 dependent
 ##factor and specified dataset to use
 create_bar_graph=function(ind_factors, dep_factor, dataset, string){

@@ -1,6 +1,6 @@
 ###MUST SAVE TABLE AND IMAGE OUTPUTS!
 
-wd="D:/Dropbox/current work/IUCN_threat_publication/IUCN_threat_analysis_redo/"
+wd="D:/Dropbox/current work/IUCN_threat_publication/IUCN_test_analysis_results20160621/"
 #wd="C:/Users/Kaipo Dye/Dropbox/PICCC/IUCN_threats_analysis_outputs/"
 setwd(wd)
 library(stringi)
