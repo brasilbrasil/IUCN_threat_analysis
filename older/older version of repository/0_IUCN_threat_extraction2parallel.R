@@ -1,7 +1,7 @@
 #losely based on 
 #http://thebiobucket.blogspot.com/2012/06/use-iucn-data-with-r-xpath.html
 #wd="C:/Users/Kaipo Dye/Dropbox/PICCC/IUCN_threats_analysis_outputs/"
-wd="D:/Dropbox/current work/IUCN_threat_publication/IUCN_test_analysis_results20160621/"
+wd="D:/Dropbox/current work/IUCN_threat_analysis_redo/"
 setwd(wd)
 require(XML)
 library(stringi)
