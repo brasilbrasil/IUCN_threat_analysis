@@ -15,14 +15,14 @@ to download additional info from IUCN site throught mining of pages [0_IUCN_thre
 --creates counts of non-climatic threats for relevant categories for factors of interest: 
 IUCN status and for 1) all species, 2) climate change vulnerable and 3) non-climate change vulnerable species 
 results are generally locatted at results\hists_and_counts
---creates figure 2 from manuscript
+--creates figure 1 from manuscript
 --creates t-test comparisons for climate change vulnerable and non-climate change vulnerable species located at results\ttests
 
 4_collect_all_stats.r
 --collects all info on non-climatic threats generated in first part of summary.R
 --collects all t-test comparisons from summary.R into single table
 --creates multiple composite bar graphs comparing number of non climatic threats by the various IV combinations located 
-  under results/graphs/ included figure 3
+  under results/graphs/ included figure 2
 
 5_graph_creation
 --creates multiple barplots for data inspection at results\barplots
