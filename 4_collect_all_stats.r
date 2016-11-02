@@ -120,7 +120,7 @@ ggsave(a, file=paste0("results/graphs/", "threat_n_increase_all_species_95CI_by_
 # MS figure 2
 difference_table_for_graphs=all_ttest_tables[all_ttest_tables$kingdom=="",]
 a=ggplot(difference_table_for_graphs, aes(x=species_type, y=(threat_increase*100-100))) +   
-  geom_bar(aes(), position = "dodge", stat="identity") + ylab("Percent increase in number of non-climatic threats") + xlab("IUCN ranking")
+  geom_bar(aes(), position = "dodge", stat="identity") + ylab("Percent increase in number of non-climatic threats") + xlab("IUCN Red List category")
 a
 ggsave(a, file=paste0("results/graphs/", "threat_increase_all_species_by_IUCN.tiff"), width=6, height=4, compression = "lzw")
 
@@ -128,7 +128,7 @@ ggsave(a, file=paste0("results/graphs/", "threat_increase_all_species_by_IUCN.ti
 dodge <- position_dodge(width=0.9)
 difference_table_for_graphs=all_ttest_tables[all_ttest_tables$kingdom=="",]
 a=ggplot(difference_table_for_graphs, aes(x=species_type, y=(threat_increase*100-100))) +   
-  geom_bar(aes(), position = dodge, stat="identity") + ylab("Percent increase in number of non-climatic threats") + xlab("IUCN ranking")
+  geom_bar(aes(), position = dodge, stat="identity") + ylab("Percent increase in number of non-climatic threats") + xlab("IUCN Red List category")
 a
 limits=aes(ymin=((difference_table_for_graphs$group.difference.CI.low+difference_table_for_graphs$t.estimate.group2)*100/difference_table_for_graphs$t.estimate.group2)-100, ymax=((difference_table_for_graphs$group.difference.CI.high+difference_table_for_graphs$t.estimate.group2)*100/difference_table_for_graphs$t.estimate.group2)-100)
 a=a+geom_errorbar(limits, width=.2, position=dodge)

@@ -108,6 +108,14 @@ limits <- aes(ymax = summary_df$n_nonCC_threat.upper, ymin=summary_df$n_nonCC_th
 a=a + geom_errorbar(limits, position=dodge, width=0.5)
 ggsave(a, file=paste0("results/graphs/mean.n.ncc.threats.by.kingdom_grey_with_SE.tiff"), width=6, height=4, compression = "lzw")
 
+#COLOR VERSION
+a=ggplot(data=summary_df, aes(x=Kingdom, y=n_nonCC_threat.mn, fill=CC_threat)) + 
+  geom_bar(position=dodge, stat="identity")+ ylab("Mean number of non-climatic threats") + #stat="summary", fun.y = "mean"
+  theme(legend.title=element_blank()) 
+limits <- aes(ymax = summary_df$n_nonCC_threat.upper, ymin=summary_df$n_nonCC_threat.lower)
+a=a + geom_errorbar(limits, position=dodge, width=0.5)
+ggsave(a, file=paste0("results/graphs/mean.n.ncc.threats.by.kingdom_COLOR_with_SE.tiff"), width=6, height=4, compression = "lzw")
+
 
 a=ggplot(data=mega_matrix2, aes(x=Kingdom, y=n_nonCC_threat, fill=CC_threat)) + 
   geom_bar(position=position_dodge(), stat="summary", fun.y = "mean")+ ylab("Mean number of non-climatic threats") +
